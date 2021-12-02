@@ -212,7 +212,7 @@ namespace ProcessWrapper
                 RedirectStandardOutput = true,
                 RedirectStandardError = true
             });
-            Console.WriteLine("Process Started");
+            Console.WriteLine("Process Started!");
         }
 
         static void ReadFileOutput(CancellationToken cancellationToken)
@@ -278,3 +278,4 @@ namespace ProcessWrapper
         }
     }
 }
+
