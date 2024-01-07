@@ -12,21 +12,19 @@ if [ ! -f ./steam/steamcmd.sh ]; then
     rm ./steamcmd.tar.gz
 fi
 
-if [ "${UPDATE}" == "true" ] || [ "${UPDATE}" == "1" ];
-then
+if [ "${UPDATE}" == "true" ] || [ "${UPDATE}" == "1" ]; then
     echo "Updating Main Branch"
-        # Update Rust Server
-        ./steam/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update 258550 +quit
-        # Validate Rust Server
-        ./steam/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update 258550 validate +quit
+    # Update Rust Server
+    ./steam/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update 258550 +quit
+    # Validate Rust Server
+    ./steam/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update 258550 validate +quit
 fi
 
 # Replace Startup Variables
 MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g' -e 's/\"/\\\"/g')`
 
 # OxideMod has been replaced with uMod
-if [ "${OxideMod}" == "true" ] || [ "${OxideMod}" == "1" ]; 
-then
+if [ "${OXIDE}" == "true" ] || [ "${OXIDE}" == "1" ]; then
     echo "Updating Oxide..."
     curl -sSL "${OXIDE_URL}" >oxide.zip
     unzip -o -q oxide.zip
