@@ -12,7 +12,7 @@ if [ ! -f ./steam/steamcmd.sh ]; then
     rm ./steamcmd.tar.gz
 fi
 
-if [ ! -z "${UPDATE}" ];
+if [ "${UPDATE}" == "true" ] || [ "${UPDATE}" == "1" ];
 then
     echo "Updating Main Branch"
         # Update Rust Server
@@ -25,7 +25,8 @@ fi
 MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g' -e 's/\"/\\\"/g')`
 
 # OxideMod has been replaced with uMod
-if [ ! -z "${OxideMod}" ]; then
+if [ "${OxideMod}" == "true" ] || [ "${OxideMod}" == "1" ]; 
+then
     echo "Updating Oxide..."
     curl -sSL "${OXIDE_URL}" >oxide.zip
     unzip -o -q oxide.zip
