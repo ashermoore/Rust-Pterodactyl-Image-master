@@ -13,7 +13,7 @@
         "ghcr.io\/ashermoore\/rustpetro:sha-9ebb896": "ghcr.io\/ashermoore\/rustpetro:sha-9ebb896"
     },
     "file_denylist": [],
-    "startup": ".\/RustDedicated -batchmode +server.port {{SERVER_PORT}} +server.identity \"rust\" +rcon.port {{RCON_PORT}} +rcon.web true +server.hostname \"{{HOSTNAME}}\" +server.level \"{{LEVEL}}\" +server.description \"{{DESCRIPTION}}\" +server.url \"{{SERVER_URL}}\" +server.headerimage \"{{SERVER_IMG}}\" +server.logoimage \"{{SERVER_LOGO}}\" +server.worldsize \"{{WORLD_SIZE}}\" +server.seed \"{{WORLD_SEED}}\" +server.maxplayers {{MAX_PLAYERS}} +rcon.password \"{{RCON_PASS}}\" +server.saveinterval {{SAVEINTERVAL}} +app.port {{APP_PORT}} {{ADDITIONAL_ARGS}}",
+    "startup": ".\/RustDedicated -batchmode +server.port {{SERVER_PORT}} +server.identity \"rust\" +rcon.port {{RCON_PORT}} +rcon.web true +server.hostname \"{{HOSTNAME}}\" +server.level \"{{LEVEL}}\" +server.description \"{{DESCRIPTION}}\" +server.url \"{{SERVER_URL}}\" +server.headerimage \"{{SERVER_IMG}}\" +server.logoimage \"{{SERVER_LOGO}}\" +server.worldsize \"{{WORLD_SIZE}}\" +server.seed \"{{WORLD_SEED}}\" +server.maxplayers {{MAX_PLAYERS}} +rcon.password \"{{RCON_PASS}}\" +server.queryport {{QUERY_PORT}} +server.saveinterval {{SAVEINTERVAL}} +app.port {{APP_PORT}} {{ADDITIONAL_ARGS}}",
     "config": {
         "files": "{}",
         "startup": "{\r\n    \"done\": \"Server startup complete\",\r\n    \"userInteraction\": []\r\n}",
@@ -146,6 +146,16 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|regex:\/^[\\w.-]*$\/|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "Query Port",
+            "description": "Port for Steam Query connections.",
+            "env_variable": "QUERY_PORT",
+            "default_value": "28010",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|integer",
             "field_type": "text"
         },
         {
